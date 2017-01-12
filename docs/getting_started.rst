@@ -148,8 +148,12 @@ Check out the video and follow step by step instructions below:
 
 1. Install ``chocolatey``
 
-   Run ``Command Prompt`` **as administrator** and paste the Cmd.exe command copied from
-   https://chocolatey.org/install
+   Run ``Command Prompt`` **as administrator** and paste the Cmd.exe command below copied from
+   https://chocolatey.org/install in the **More Options** section.
+
+   .. code-block:: bash
+
+      @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 
 2. Install ``cyg-get``
    
@@ -158,6 +162,20 @@ Check out the video and follow step by step instructions below:
    ..  code-block:: bash
 
        > choco install cyg-get -y
+
+  .. note::
+
+  If you cannot install the cyg-get due to the checksums file, install this command instead:
+
+   ..  code-block:: bash
+
+       > choco install cyg-get -y --ignore-checksums
+
+  Or reinstall it:
+
+    ..  code-block:: bash
+
+       > choco install cyg-get -y --ignore-checksums --force
 
 3. Install ``bash-completion``, ``git``, ``virtualbox`` and ``vagrant``
 
@@ -168,6 +186,21 @@ Check out the video and follow step by step instructions below:
      .. code-block:: bash
 
         $ cyg-get.bat bash-completion
+
+  ..  note::
+
+    - If you encounter the following error, fix it and run the command again:
+
+      ..  code-block:: bash
+
+          C:\ProgramData\chocolatey\lib\cyg-get\tools\cyg-get.ps1 : Please ensure you have Cygwin installed.
+          To install please call 'choco install cygwin' (optionally add -y to autoconfirm).
+          ERROR: This command cannot be run due to the error: The system cannot find the file specified.
+          At line:1 char:1
+
+      Fix it by going to http://cygwin.com/install.html and save the *setup-x86_64.exe* file with the new name *cygwinsetup.exe* into the *cygwin* folder (Details with https://github.com/chocolatey/chocolatey-coreteampackages/issues/176#issuecomment-212939458.)
+
+      You are recommended to see the instruction video above for more details.
 
    - Install ``git``:
 
@@ -187,32 +220,17 @@ Check out the video and follow step by step instructions below:
 
         $ choco install vagrant -y
 
+   - After finishing the vagrant installation, you are suggested to restart your machine. 
 
-..  note::
+  Next: :ref:`teracy-dev Git Clone and Vagrant Up <teracy-dev-git-clone-and-vagrant-up>`
 
-    - If you encounter the following error:
-
-      ..  code-block:: bash
-
-          C:\ProgramData\chocolatey\lib\cyg-get\tools\cyg-get.ps1 : Please ensure you have Cygwin installed.
-          To install please call 'choco install cygwin' (optionally add -y to autoconfirm).
-          ERROR: This command cannot be run due to the error: The system cannot find the file specified.
-          At line:1 char:1
-
-      then fix it with https://github.com/chocolatey/chocolatey-coreteampackages/issues/176#issuecomment-212939458
-
-    - If you ``$ vagrant up`` but cannot start the VirtualBox, please find "VBoxUSBMon.inf" and
-      "VBoxDrv.inf" in your installation directory then re-install it to fix the issue. The
-      VirtualBox has an installation issue which was reported `here <https://www.virtualbox.org/ticket/4140>`_
-
-Next: :ref:`teracy-dev Git Clone and Vagrant Up <teracy-dev-git-clone-and-vagrant-up>`
 
 .. _teracy-dev-git-clone-and-vagrant-up:
 
 teracy-dev Git Clone and Vagrant Up
 -----------------------------------
 
-1. Open your terminal window and type:
+1. Open your ``Cygwin Terminal`` window **as administrator** and type:
 
     ..  code-block:: bash
 
@@ -267,8 +285,19 @@ teracy-dev Git Clone and Vagrant Up
           If the error still occurs, you have to uninstall and re-install ``virtualbox``, then
           ``vagrant`` to fix this error.
 
-2. Use the ``$ vagrant ssh`` command to access the virtual machine you have just
-   provisioned. You should see the following similar messages:
+        - If you ``$ vagrant up`` but cannot start the VirtualBox, please find "VBoxUSBMon.inf" and
+        "VBoxDrv.inf" in your installation directory then re-install it to fix the issue. The
+        VirtualBox has an installation issue which was reported `here <https://www.virtualbox.org/ticket/4140>`_
+
+
+2. Open another ``Cygwin Terminal`` window **as administrator**, and use the ``$ vagrant ssh`` command to access the virtual machine you have just  provisioned.
+
+    ..  code-block:: bash
+
+      $ cd teracy-dev
+      $ vagrant ssh
+
+  You should see the following similar messages:
 
    .. code-block:: bash
 
@@ -283,6 +312,18 @@ teracy-dev Git Clone and Vagrant Up
 
 
       Last login: Tue Dec  6 14:19:56 2016 from 10.0.2.2
+
+3. Check if docker and docker-composed are already installed
+
+After vagrant ssh, use the following commands:
+
+  .. code-block:: bash
+
+      $ docker --version
+      $ docker-compose --version
+
+  .. note::
+    In case the docker command is not found, you should ``$ vagrant destroy``, then ``vagrant up`` again or ``vagrant reload --provision``
 
 Git Setup
 ---------
