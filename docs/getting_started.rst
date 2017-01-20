@@ -163,25 +163,25 @@ Check out the video and follow step by step instructions below:
 
        > choco install cyg-get -y
 
-  .. note::
+  ..  note::
 
-  If you cannot install the cyg-get due to the checksums file, install this command instead:
+    - If you cannot install the cyg-get due to the checksums file, install this command instead:    
 
-   ..  code-block:: bash
+      ..  code-block:: bash
 
-       > choco install cyg-get -y --ignore-checksums
+          > choco install cyg-get -y --ignore-checksums
 
-  Or reinstall it:
+    - Or reinstall it:
 
-    ..  code-block:: bash
+      ..  code-block:: bash
 
-       > choco install cyg-get -y --ignore-checksums --force
+          > choco install cyg-get -y --ignore-checksums --force
 
 3. Install ``bash-completion``, ``git``, ``virtualbox`` and ``vagrant``
 
-   Run ``Cygwin Terminal`` **as administrator** with the following commands:
+  Run ``Cygwin Terminal`` **as administrator** with the following commands:
 
-   - Install ``bash-completion``:
+  - Install ``bash-completion``:
 
      .. code-block:: bash
 
@@ -202,25 +202,26 @@ Check out the video and follow step by step instructions below:
 
       You are recommended to see the instruction video above for more details.
 
-   - Install ``git``:
+
+  - Install ``git``:
 
      .. code-block:: bash
 
         $ cyg-get.bat git
 
-   - Install ``virtualbox`` (>=5.1):
+  - Install ``virtualbox`` (>=5.1):
 
      .. code-block:: bash
 
         $ choco install virtualbox -y
 
-   - Install ``vagrant`` (>=1.8.7, >=1.9.1):
+  - Install ``vagrant`` (>=1.8.7, >=1.9.1):
 
      .. code-block:: bash
 
         $ choco install vagrant -y
 
-   - After finishing the vagrant installation, you are suggested to restart your machine. 
+  - After finishing the vagrant installation, you are suggested to restart your machine. 
 
   Next: :ref:`teracy-dev Git Clone and Vagrant Up <teracy-dev-git-clone-and-vagrant-up>`
 
@@ -271,7 +272,7 @@ teracy-dev Git Clone and Vagrant Up
 
     ..  note::
 
-        - You may see the error:
+      - You may see the error:
           ::
 
             vagrant uses the VBoxManage binary that ships with VirtualBox and requires this to be
@@ -285,9 +286,10 @@ teracy-dev Git Clone and Vagrant Up
           If the error still occurs, you have to uninstall and re-install ``virtualbox``, then
           ``vagrant`` to fix this error.
 
-        - If you ``$ vagrant up`` but cannot start the VirtualBox, please find "VBoxUSBMon.inf" and
-        "VBoxDrv.inf" in your installation directory then re-install it to fix the issue. The
-        VirtualBox has an installation issue which was reported `here <https://www.virtualbox.org/ticket/4140>`_
+      - If you ``$ vagrant up`` but cannot start the VirtualBox, please find "VBoxUSBMon.inf" and
+        "VBoxDrv.inf" in your installation directory then re-install it to fix the issue. The VirtualBox
+        has an installation issue which was reported `here <https://www.virtualbox.org/ticket/4140>`_
+        
 
 
 2. Open another ``Cygwin Terminal`` window **as administrator**, and use the ``$ vagrant ssh`` command to access the virtual machine you have just  provisioned.
