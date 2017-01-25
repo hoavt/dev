@@ -165,7 +165,7 @@ Check out the video and follow step by step instructions below:
 
   ..  note::
 
-    - If you cannot install the cyg-get due to the checksums file, install this command instead:    
+    - If you cannot install the cyg-get due to the checksums file, install this command instead:
 
       ..  code-block:: bash
 
@@ -187,20 +187,20 @@ Check out the video and follow step by step instructions below:
 
         $ cyg-get.bat bash-completion
 
-  ..  note::
+     ..  note::
 
-    - If you encounter the following error, fix it and run the command again:
+        - If you encounter the following error, fix it and run the command again:
 
-      ..  code-block:: bash
+         ..  code-block:: bash
 
-          C:\ProgramData\chocolatey\lib\cyg-get\tools\cyg-get.ps1 : Please ensure you have Cygwin installed.
-          To install please call 'choco install cygwin' (optionally add -y to autoconfirm).
-          ERROR: This command cannot be run due to the error: The system cannot find the file specified.
-          At line:1 char:1
+            C:\ProgramData\chocolatey\lib\cyg-get\tools\cyg-get.ps1 : Please ensure you have Cygwin installed.
+            To install please call 'choco install cygwin' (optionally add -y to autoconfirm).
+            ERROR: This command cannot be run due to the error: The system cannot find the file specified.
+            At line:1 char:1
 
-      Fix it by going to http://cygwin.com/install.html and save the *setup-x86_64.exe* file with the new name *cygwinsetup.exe* into the *cygwin* folder (Details with https://github.com/chocolatey/chocolatey-coreteampackages/issues/176#issuecomment-212939458.)
+         Fix it by going to http://cygwin.com/install.html and save the *setup-x86_64.exe* file with the new name *cygwinsetup.exe* into the *cygwin* folder (Details with https://github.com/chocolatey/chocolatey-coreteampackages/issues/176#issuecomment-212939458.)
 
-      You are recommended to see the instruction video above for more details.
+         You are recommended to see the instruction video above for more details.
 
 
   - Install ``git``:
@@ -222,6 +222,7 @@ Check out the video and follow step by step instructions below:
         $ choco install vagrant -y
 
   - After finishing the vagrant installation, you are suggested to restart your machine. 
+
 
   Next: :ref:`teracy-dev Git Clone and Vagrant Up <teracy-dev-git-clone-and-vagrant-up>`
 
@@ -289,7 +290,6 @@ teracy-dev Git Clone and Vagrant Up
       - If you ``$ vagrant up`` but cannot start the VirtualBox, please find "VBoxUSBMon.inf" and
         "VBoxDrv.inf" in your installation directory then re-install it to fix the issue. The VirtualBox
         has an installation issue which was reported `here <https://www.virtualbox.org/ticket/4140>`_
-        
 
 
 2. Open another ``Cygwin Terminal`` window **as administrator**, and use the ``$ vagrant ssh`` command to access the virtual machine you have just  provisioned.
