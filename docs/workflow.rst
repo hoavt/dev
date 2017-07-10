@@ -15,8 +15,7 @@ To work on a repository project, ``fork`` it first to your git account.
 Your working repositories MUST be cloned from your git account and stored under
 the ``workspace/personal`` directory.
 
-For example, you are going to work on the
-https://code.teracy.org/projects/PILOT/repos/pixelate/browse project, follow the steps below:
+For example, you are going to work on the https://github.com/teracyhq/dev project, follow the steps below:
 
 1. ``Fork`` the official repository to your developer account.
 
@@ -24,10 +23,7 @@ https://code.teracy.org/projects/PILOT/repos/pixelate/browse project, follow the
 
     .. image:: _static/workflow/fork-1.png
 
-    **Step 2**: Click ``Fork repository``.
-
-    .. image:: _static/workflow/fork-2.png
-        :width: 500
+    **Step 2**: Click ``Fork repository``
 
     Forking successfully with the URL like this:
 
@@ -36,30 +32,29 @@ https://code.teracy.org/projects/PILOT/repos/pixelate/browse project, follow the
 
 2. ``Clone`` it to   workspace.
 
-    **Step 1**: Click ``Clone`` to get the ``.git`` repository clone URL.
+    **Step 1**: Click ``Clone or download`` to get the ``.git`` repository clone URL.
 
-    **Step 2**: Copy the URL ``ssh://git@code.teracy.org/~hoavt/pixelate.git`` in the
+    **Step 2**: Copy the URL ``git@github.com:hoavt/teracy-dev.git`` in the
     ``SSH`` field.
 
     **Step 3**: Open the terminal window and type the ``git clone`` command as below:
     ::
 
-        $ git clone ssh://git@code.teracy.org/~hoavt/pixelate.git
+        $ git clone git@github.com:hoavt/teracy-dev.git
                 ============== "Forked" repo URL ===================
-
-    .. image:: _static/workflow/clone-fork-url.png
 
 
 3. Add ``upstream`` repository which is the official repository.
 
-    **Step 1**: Browse the repository ``https://code.teracy.org/projects/PILOT/repos/pixelate/browse``, and click ``Clone`` to get the ``.git`` clone URL.
+    **Step 1**: Browse the repository ``https://github.com/teracyhq/dev``, and click ``Clone or download`` to get the ``.git`` clone URL.
 
-    **Step 2**: Copy the URL ``ssh://git@code.teracy.org/pilot/pixelate.git`` in the **SSH** field.
+    **Step 2**: Copy the URL ``git@github.com:teracyhq/dev.git`` in the **SSH** field.
 
-    **Step 3**: Open the terminal window and type the ``git remote add upstream`` command as below:
+    **Step 3**: Open the terminal window and type the ``git remote add upstream`` command in the ``teracy-dev`` folder
+    as below:
     ::
-
-        $ git remote add upstream ssh://git@code.teracy.org/pilot/pixelate.git
+        $ cd teracy-dev
+        $ git remote add upstream git@github.com:teracyhq/dev.git
             ================= Official repo URL ==================
 
     .. image:: _static/workflow/clone-official-url.png
@@ -241,9 +236,7 @@ Let's get in more detais:
         - Open the **Create Pull Request** form:
             .. image:: _static/workflow/submit-pull-request-code-1.png
 
-        - Input the neccessary information into the form:
-
-            .. image:: _static/workflow/create-pull-request-form.png
+        - Input the necessary information into the Pull Request form.
 
     2. Copy the pull request link on the browser's address bar.
 
