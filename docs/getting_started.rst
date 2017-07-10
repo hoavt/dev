@@ -377,6 +377,6 @@ Git Setup
 ---------
 
 To work with ``git``, complete the following guides to set up ssh keys:
-https://help.github.com/categories/ssh/
+https://help.github.com/articles/connecting-to-github-with-ssh/
 
-*Congratulations, you’ve all set now!*
+*Congratulations, you've all set now!*
