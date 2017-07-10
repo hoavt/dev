@@ -233,10 +233,13 @@ Let's get in more detais:
 
 
     1. Create Pull-request for your code.
-        - Open the **Create Pull Request** form:
-            .. image:: _static/workflow/submit-pull-request-code-1.png
+        - Access the repository and click ``Compare & pull request``
+            .. image:: _static/workflow/submit-pull-request-code.png
 
-        - Input the necessary information into the Pull Request form.
+        - Select the repository to which you want to merge your pull request.
+            .. image:: _static/workflow/select-repo-to-merge.png
+
+        - Click ``Create pull request``
 
     2. Copy the pull request link on the browser's address bar.
 
