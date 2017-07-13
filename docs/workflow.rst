@@ -1,7 +1,7 @@
 Workflow
 ========
 
-At Teracy, we care about the workflow that makes it as much consistent and fun as possible, take
+At Teracy, we care about the workflow that makes it as much consistent and fun as possible to take
 less time with higher quality of work.
 
 We adopted `A successful Git branching model`_ for our development workflow with some specific
@@ -11,42 +11,41 @@ rules. What's the fun with a game without rules :-D?
 Initializing Working Repositories
 ---------------------------------
 
-To work on a repository project, ``fork`` it first to your git account.
-Your working repositories MUST be cloned from your git account and stored under
-the ``workspace/personal`` directory.
+To work on a repository project, ``fork`` it first to your personal account.
+Your working repositories MUST be cloned from your personal  account and stored under
+the ``workspace`` directory.
 
 For example, you are going to work on the https://github.com/teracyhq/dev project, follow the steps below:
 
-1. ``Fork`` the official repository to your developer account.
+1. ``Fork`` the official repository to your personal account.
 
     **Step 1**: Click ``Fork``.
 
     .. image:: _static/workflow/fork-1.png
 
-    **Step 2**: Click ``Fork repository``
+    **Step 2**: Click the avatar image to start forking
+
+    .. image:: _static/workflow/fork-2.png
 
     Forking successfully with the URL like this:
 
     .. image:: _static/workflow/fork-3.png
 
 
-2. ``Clone`` it to   workspace.
+2. ``Clone`` it to the ``workspace`` directory.
 
-    **Step 1**: Click ``Clone or download`` to get the ``.git`` repository clone URL.
+    **Step 1**: Click ``Clone or download`` to get the ``.git`` repository URL.
 
-    **Step 2**: Copy the URL ``git@github.com:hoavt/teracy-dev.git`` in the
-    ``SSH`` field.
+    **Step 2**: Copy the URL in the ```SSH`` field (for example, mine is ```git@github.com:hoavt/teracy-dev.git```)
 
     **Step 3**: Open the terminal window and type the ``git clone`` command as below:
     ::
-
+        $ cd workspace
         $ git clone git@github.com:hoavt/teracy-dev.git
-                ============== "Forked" repo URL ===================
-
 
 3. Add ``upstream`` repository which is the official repository.
 
-    **Step 1**: Browse the repository ``https://github.com/teracyhq/dev``, and click ``Clone or download`` to get the ``.git`` clone URL.
+    **Step 1**: Browse the repository ``https://github.com/teracyhq/dev``, and click ``Clone or download`` to get the official ``git`` repository URL.
 
     **Step 2**: Copy the URL ``git@github.com:teracyhq/dev.git`` in the **SSH** field.
 
@@ -55,7 +54,7 @@ For example, you are going to work on the https://github.com/teracyhq/dev projec
     ::
         $ cd teracy-dev
         $ git remote add upstream git@github.com:teracyhq/dev.git
-            ================= Official repo URL ==================
+
 
     .. image:: _static/workflow/clone-official-url.png
 
@@ -63,10 +62,10 @@ For example, you are going to work on the https://github.com/teracyhq/dev projec
 
     .. image:: _static/workflow/git-remote-info.png
 
-The successful start is when you have both these remotes on your local development:
+The successful start is when you have both these remotes on your local repository.
 
-    - ``origin`` (remote from your repo)
-    - ``upstream`` (remote from official repo)
+    - ``origin`` (remote from your repository)
+    - ``upstream`` (remote from official repository)
 
 After initializing working repository successfully, switch to the next step: `Git Branching Off`_.
 
@@ -77,10 +76,11 @@ Git Branching Off
 
 Usually, a new branch should be branched off from a target to-be-merged remote branch.
 It is often *upstream/develop* or sometimes *upstream/master*. However, there are cases
-which are not applied:
-Always keep in mind that you need to rebase often the work of that upstream branch to your working branch.
+which are not applied.
 
-Firstly, you must know what the meaning of “Branching Off” is . In a shorthand, it means you checkout from a branch,
+Remember to rebase your workspace branch with the upstream branch as often as possible.
+
+Firstly, you must know what the meaning of “Branching Off” is. In a shorthand, it means you checkout from a branch,
 then create another branch from that checkout.
 ::
 
@@ -106,12 +106,12 @@ This is a demonstration example. ``phuonglm`` is working on
 
 
 Details:
-    - \(1) Adds the official repository from which you use source code for your issue.
-    - \(2) Fetches to get the  new updates of the official repository.
-    - \(3) Creates a new branch on your local device basing the remote branch.
-    - \(4) Pushes your new branch to Git to wait for being reviewed and merged to the ``features/DEV-1`` branch.
+    - \(1) Adds the official repository from which you use the source code for your issue.
+    - \(2) Fetches to get the new updates of the official repository.
+    - \(3) Creates a new branch on your local device basing on the remote branch.
+    - \(4) Pushes your new branch to ``Git`` to wait for being reviewed and merged to the ``features/DEV-1`` branch.
 
-When the ``phuonglm’s features/DEV-1-fabric-deployment-virtual-machine`` has some updates, you need to fetch
+When the ``phuonglm’s features/DEV-1-fabric-deployment-virtual-machine`` has any updates, you need to fetch
 and rebase on that branch:
 ::
 
@@ -150,7 +150,7 @@ The workingflow is summarized under 4 major steps:
 - Step 3: Submitting pull-request. Waiting for approval or resolving conflict if any.
 - Step 4: Cleaning up branch
 
-Let's get in more detais:
+Let's get in more details:
 
 **Step 1: Branching-off based on issue**
 
@@ -186,11 +186,11 @@ Let's get in more detais:
         $ git push origin bugs/<issue-key>-<concise-title>
 
 
-    Above are the templates `Branching off` based on an issue's types.
+    Above are the templates `Branching off` based on issues' types.
 
 **Step 2: Developing with Code/ Commit/ Push**
 
-    During your coding, you would make some commit and push, in that case you have to check TWO things:
+    During your coding, you would make some commits and push, in that case you have to check TWO things:
 
         - `Quality Checklist`_
         - `Git Commit Messages`_
