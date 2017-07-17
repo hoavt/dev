@@ -34,9 +34,9 @@ For example, you are going to work on the https://github.com/teracyhq/dev projec
 
 2. ``Clone`` it to the ``workspace`` directory.
 
-    **Step 1**: Click ``Clone or download`` to get the ``.git`` repository URL.
+    **Step 1**: Click ``Clone or download`` to get the ``git`` repository URL.
 
-    **Step 2**: Copy the URL in the ```SSH`` field (for example, mine is ```git@github.com:hoavt/teracy-dev.git```)
+    **Step 2**: Copy the URL in the ``SSH`` field (for example, mine is ``git@github.com:hoavt/teracy-dev.git``)
 
     **Step 3**: Open the terminal window and type the ``git clone`` command as below:
     ::
@@ -65,7 +65,7 @@ For example, you are going to work on the https://github.com/teracyhq/dev projec
 The successful start is when you have both these remotes on your local repository.
 
     - ``origin`` (remote from your repository)
-    - ``upstream`` (remote from official repository)
+    - ``upstream`` (remote from the official repository)
 
 After initializing working repository successfully, switch to the next step: `Git Branching Off`_.
 
@@ -80,52 +80,54 @@ which are not applied.
 
 Remember to rebase your workspace branch with the upstream branch as often as possible.
 
-Firstly, you must know what the meaning of “Branching Off” is. In a shorthand, it means you checkout from a branch,
+Firstly, you must know what the meaning of “Branching Off” is. It means you checkout from a branch,
 then create another branch from that checkout.
 ::
 
-    $ git checkout branch-1 -b branch-2
+    $ git checkout upstream/branch-1 -b branch-2
 
-Here is how it works: Git starts checkout branch-1, then creates branch-2 based on that checkout.
-Now branch-2 is on your local and ready for you to work on it.
+Here is how it works:
 
-This is a demonstration example. ``phuonglm`` is working on
-``features/DEV-1-fabric-deployment-virtual-machine``, and you are going to work on
-``features/DEV-2-fabric-deployment-remote-machine`` which depends on
-``phuonglm’s features/DEV-1``. On this case, you MUST indicate the branch name with ``deps_<issue-key>``.
+Git starts to checkout the ``branch-1`` branch, then creates a new branch named ``branch-2`` basing on
+the ``branch-1`` branch. Now you are at the ``branch-2`` branch on your local and it's ready for you to work on it.
 
-(In case, you are working on a branch which depends on many different branches, the branch name should have
-``deps_<issue-key[_issue-key]>``. For example: ``deps_DEV-1_DEV-2``.)
+This is a demonstration example. ``phuonglm`` is working on the
+``features/#12-fabric-deployment-virtual-machine`` branch, and you are going to work on the
+``features/#13-fabric-deployment-remote-machine`` branch which depends on
+phuonglm’s ``features/#12-fabric-deployment-virtual-machine`` branch. On this case, you MUST indicate the branch name with ``deps_<issue-key>``.
+
+In case, you are working on a branch which depends on many different branches, the branch name should have
+``deps_<#issuenumber_#issuenumber>``. For example: ``deps_#1_#2``.
 ::
 
     $ git remote add phuonglm https://github.com/phuonglm/teracy-django-boilerplate.git       (1)
     $ git fetch phuonglm                                                                      (2)
-    $ git checkout phuonglm/features/DEV-1-fabric-deployment-virtual-machine -b               (3)
-      features/DEV-2-fabric-deploymen-remote-machine-deps_DEV-1
-    $ git push origin features/DEV-2-fabric-deployment-remote-machine-deps_DEV-1              (4)
+    $ git checkout phuonglm/features/#12-fabric-deployment-virtual-machine -b               (3)
+      features/#13-fabric-deployment-remote-machine-deps_#12
+    $ git push origin features/#13-fabric-deployment-remote-machine-deps_#12              (4)
 
 
 Details:
     - \(1) Adds the official repository from which you use the source code for your issue.
     - \(2) Fetches to get the new updates of the official repository.
     - \(3) Creates a new branch on your local device basing on the remote branch.
-    - \(4) Pushes your new branch to ``Git`` to wait for being reviewed and merged to the ``features/DEV-1`` branch.
+    - \(4) Pushes your new branch to ``Git`` to wait for being reviewed and merged to the ``features/#12-fabric-deployment-virtual-machine`` branch.
 
-When the ``phuonglm’s features/DEV-1-fabric-deployment-virtual-machine`` has any updates, you need to fetch
+When the phuonglm’s ``features/#12-fabric-deployment-virtual-machine`` branch has any updates, you need to fetch
 and rebase on that branch:
 ::
 
     $ git fetch phuonglm
-    $ git rebase phuonglm/features/DEV-1-fabric-deployment-virtual-machine
-    $ git push origin features/DEV-2-fabric-deployment-remote-machine-deps_DEV-1 -f
+    $ git rebase phuonglm/features/#12-fabric-deployment-virtual-machine
+    $ git push origin features/#13-fabric-deployment-remote-machine-deps_#12 -f
 
-When ``phuonglm’s features/DEV-1`` is merged into ``upstream/develop``, you need to rebase on it to get these
+When phuonglm’s ``features/features/#12-fabric-deployment-virtual-machine`` branch is merged into ``upstream/develop``, you need to rebase on it to get these
 new updates:
 ::
 
     $ git fetch upstream
     $ git rebase upstream/develop
-    $ git push origin features/DEV-2-fabric-deployment-remote-machine-deps_DEV-1 -f
+    $ git push origin features/#13-fabric-deployment-remote-machine-deps_#12 -f
 
 .. note::
        Git is a distributed version control system, so collaboration like this should be encouraged.
