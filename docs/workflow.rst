@@ -78,7 +78,7 @@ Usually, a new branch should be branched off from a target to-be-merged remote b
 It is often *upstream/develop* or sometimes *upstream/master*. However, there are cases
 which are not applied.
 
-Remember to rebase your workspace branch with the upstream branch as often as possible.
+Remember to rebase your local branch with the remote upstream branch as often as possible.
 
 Firstly, you must know what the meaning of “Branching Off” is. It means you checkout from a branch,
 then create another branch from that checkout.
@@ -97,7 +97,7 @@ This is a demonstration example. ``phuonglm`` is working on the
 phuonglm’s ``features/#12-fabric-deployment-virtual-machine`` branch. On this case, you MUST indicate the branch name with ``deps_<issue-key>``.
 
 In case, you are working on a branch which depends on many different branches, the branch name should have
-``deps_<#issuenumber_#issuenumber>``. For example: ``deps_#1_#2``.
+``deps_<issue-key>_<issue-key>``. For example: ``deps_#1_#2``.
 ::
 
     $ git remote add phuonglm https://github.com/phuonglm/teracy-django-boilerplate.git       (1)
@@ -162,7 +162,7 @@ Let's get in more details:
     ::
 
         $ git fetch upstream
-        $ git checkout upstream/master -b features/<issue-key>-<concise-title>
+        $ git checkout upstream/develop -b features/<issue-key>-<concise-title>
         $ git push origin features/<issue-key>-<concise-title>
 
 
@@ -170,21 +170,21 @@ Let's get in more details:
     ::
 
         $ git fetch upstream
-        $ git checkout upstream/master -b improvements/<issue-key>-<concise-title>
+        $ git checkout upstream/develop -b improvements/<issue-key>-<concise-title>
         $ git push origin improvements/<issue-key>-<concise-title>
 
     **Working on tasks or sub-tasks**
     ::
 
         $ git fetch upstream
-        $ git checkout upstream/master -b tasks/<issue-key>-<concise-title>
+        $ git checkout upstream/develop -b tasks/<issue-key>-<concise-title>
         $ git push origin tasks/<issue-key>-<concise-title>
 
     **Working on bugs**
     ::
 
         $ git fetch upstream
-        $ git checkout upstream/master -b bugs/<issue-key>-<concise-title>
+        $ git checkout upstream/develop -b bugs/<issue-key>-<concise-title>
         $ git push origin bugs/<issue-key>-<concise-title>
 
 
@@ -197,12 +197,12 @@ Let's get in more details:
         - `Quality Checklist`_
         - `Git Commit Messages`_
 
-    If there are some changes from the remote branch (for example, *upstream/master*) that you need,
+    If there are some changes from the remote branch (for example, *upstream/develop*) that you need,
     you have to rebase your branch with these updates. It could be done by these commands:
     ::
 
         $ git fetch upstream
-        $ git rebase upstream/master
+        $ git rebase upstream/develop
 
     By doing this, your branch will be rebased with updates from others.
     If it has any conflicts, you have to resolve them by:
@@ -225,7 +225,7 @@ Let's get in more details:
     ::
 
         $ git add -a
-        $ git commit -m "<issue-key>|git commit message"
+        $ git commit -m "@ <issue-key>|git commit messages"
         $ git push origin [your-branch-name]
 
 **Step 3: Submitting Pull-request**
@@ -243,10 +243,8 @@ Let's get in more details:
 
         - Click ``Create pull request``
 
-    2. Copy the pull request link on the browser's address bar.
-
-
-    3. Add Pull-request to your issue.
+    2. Optional if you're working on issues at issues.teracy.org. Copy the pull request link on the browser's address bar,
+    then add Pull-request to your issue.
         - Open your issue --> Click **Workflow** --> Click **Send Pull Request**.
 
             .. image:: _static/workflow/submit-pull-request-issue.png
@@ -265,7 +263,7 @@ Let's get in more details:
 
 **Step 4 : Cleaning up branch**
 
-    After your code get reviewed and approved. It will be merged to the offical repository, so you have to make a
+    After your code gets reviewed and approved. It will be merged to the official repository, so you have to make a
     `Git Branch Cleaning Up`_ to clean up your local and get ready for the next issue.
 
 
@@ -279,23 +277,21 @@ To prevent chaos happening, you should follow some rules below in the workflow:
 Branch Name Rules
 -----------------
 
-When start working on a new issue, you always MUST to start a new branch for it and that branch's name
-is based on each type of the issue, which means if the issue is:
+When starting to work on a new issue, you always MUST start a new branch for it and that branch’s name is based on each type of the issue, which means if the issue is:
 
-- ``feature`` => Branch's name is ``features/<issue-key>-<concise-title>``
-- ``improvement`` => Branch's name is ``improvements/<issue-key>-<concise-title>``
-- ``task or sub-task`` => Branch's name is ``tasks/<issue-key>-<concise-title>``
-- ``bug`` => Branch's name is ``bugs/<issue-key>-<concise-title>``
-- ``critical bug`` => Branch's name is ``hot-fixes/<issue-key>-<concise-title>``
+- ``feature`` => Branch's name is ``features/<issue_key>-<concise-title>`` or ``feature/<issue_key>-<concise-title>``
+- ``improvement`` => Branch's name is ``improvements/<issue-key>-<concise-title>`` or ``improvement/<issue-key>-<concise-title>``
+- ``task or sub-task`` => Branch's name is ``tasks/<issue-key>-<concise-title>`` or ``task/<issue-key>-<concise-title>``
+- ``bug`` => Branch's name is ``bugs/<issue-key>-<concise-title>`` or ``bug/<issue-key>-<concise-title>``
+- ``critical bug`` => Branch's name is ``hot-fixes/<issue-key>-<concise-title>`` or ``hot-fix/<issue-key>-<concise-title>``
 
 In which:
 
-- ``<issue-key>`` is the "key" of the issues. It could be CLT-xxx, DEV-xxx. The key
-  prefix is based on the type of project.
-- ``<concise-title>`` is the issue's title which is rewritten in concise way and replacing ``space`` with ``-``.
-- ``<issue-key>`` and ``<concise-title>`` is seperated by a ``-`` character.
+- ``<issue-key>`` is the "key" of the issue. It could be CLT-xxx, DEV-xxx or #XXX The key prefix is based on the type of project.
+- ``<concise-title>`` is the issue's title which is rewritten in a concise way and replaced ``space`` with ``-``.
+- ``<issue-key>`` and ``<concise-title>`` is separated by a ``-`` character.
 
-For example, the issue ``CLT-183 | Sharing Tutorial is not firing email #652``, its branch name can be ``bugs/CLT-183-sharing-tutorial-is-not-firing-email-#652``.
+For example, the issue ``@ #652 | Sharing Tutorial is not firing email``, its branch name can be ``bugs/#652-sharing-tutorial-is-not-firing-email``.
 
 
 -----------------
@@ -325,13 +321,13 @@ Git commit messages must convey the actual change/ work of that commit. Usually,
 should follow the convention pattern:
 ::
 
-    <issue-key> | <issue-title>: <changes description>
+   @ <issue-key> | <issue-title>: <changes description>
     <Multi-line description for detail changes, notices, solutions, etc.>
 
 For example:
 ::
 
-    DEV-1 | Auto deployment with Fabric
+    @ #1 | Auto deployment with Fabric
 
     Fabric deployment should be very easy to deploy on both local and remote machine.
     This is the work on local part.
