@@ -36,10 +36,11 @@ For example, you are going to work on the https://github.com/teracyhq/dev projec
 
     **Step 1**: Click ``Clone or download`` to get the ``git`` repository URL.
 
-    **Step 2**: Copy the URL in the ``SSH`` field (for example, mine is ``git@github.com:hoavt/teracy-dev.git``)
+    **Step 2**: Copy the URL in the ``SSH`` field (for example, mine is ``git@github.com:hoavt/teracy-dev.git``).
 
     **Step 3**: Open the terminal window and type the ``git clone`` command as below:
     ::
+
         $ cd workspace
         $ git clone git@github.com:hoavt/teracy-dev.git
 
@@ -47,16 +48,16 @@ For example, you are going to work on the https://github.com/teracyhq/dev projec
 
     **Step 1**: Browse the repository ``https://github.com/teracyhq/dev``, and click ``Clone or download`` to get the official ``git`` repository URL.
 
+    .. image:: _static/workflow/clone-official-url.png
+
     **Step 2**: Copy the URL ``git@github.com:teracyhq/dev.git`` in the **SSH** field.
 
     **Step 3**: Open the terminal window and type the ``git remote add upstream`` command in the ``teracy-dev`` folder
     as below:
     ::
+
         $ cd teracy-dev
         $ git remote add upstream git@github.com:teracyhq/dev.git
-
-
-    .. image:: _static/workflow/clone-official-url.png
 
 4. Recheck to verify your clone by using the ``git remote -v`` command.
 
@@ -215,6 +216,7 @@ Let's get in more details:
         The sample on a resolved-conflict file:
 
         .. image:: _static/workflow/conflict-resolved.png
+
     - Adding conflict-resolved-file in git, then continuing to rebase.
         ::
 
@@ -225,8 +227,15 @@ Let's get in more details:
     ::
 
         $ git add -a
-        $ git commit -m "@ <issue-key>|git commit messages"
+        $ git commit -m "@ <issue-key> | git commit messages"
         $ git push origin [your-branch-name]
+
+    For example:
+    ::
+
+        $ git commit -m "@ #3 | something here"
+
+    Remember that there is a space character before and after "|", and use the ``#issue-number`` for the issues on github, and gitlab.
 
 **Step 3: Submitting Pull-request**
 
@@ -243,8 +252,7 @@ Let's get in more details:
 
         - Click ``Create pull request``
 
-    2. Optional if you're working on issues at issues.teracy.org. Copy the pull request link on the browser's address bar,
-    then add Pull-request to your issue.
+    2. Optional if you're working on issues at issues.teracy.org. Copy the pull request link on the browser's address bar, then add Pull-request to your issue.
         - Open your issue --> Click **Workflow** --> Click **Send Pull Request**.
 
             .. image:: _static/workflow/submit-pull-request-issue.png
@@ -287,7 +295,7 @@ When starting to work on a new issue, you always MUST start a new branch for it 
 
 In which:
 
-- ``<issue-key>`` is the "key" of the issue. It could be CLT-xxx, DEV-xxx or #XXX The key prefix is based on the type of project.
+- ``<issue-key>`` is the "key" of the issue. It could be ``CLT-xxx``, ``DEV-xxx`` for issues on ``issues.teracy.org`` or ``#XXX`` for issues on ``gitlab`` and ``github``. The key prefix is based on the type of project.
 - ``<concise-title>`` is the issue's title which is rewritten in a concise way and replaced ``space`` with ``-``.
 - ``<issue-key>`` and ``<concise-title>`` is separated by a ``-`` character.
 
@@ -321,7 +329,7 @@ Git commit messages must convey the actual change/ work of that commit. Usually,
 should follow the convention pattern:
 ::
 
-   @ <issue-key> | <issue-title>: <changes description>
+   <issue-key> | <issue-title>: <changes description>
     <Multi-line description for detail changes, notices, solutions, etc.>
 
 For example:
@@ -331,6 +339,9 @@ For example:
 
     Fabric deployment should be very easy to deploy on both local and remote machine.
     This is the work on local part.
+
+.. note::
+    "@" is used before *<issue-key>* because github, and gitlab have the "#" character. It's fine for the command *git commit -m "#<issue-number>"* but not for *git commit -a* or new commit or *$ git commit --amend* for an existing commit to open on the VIM editor.
 
 ----------------------
 Git Branch Cleaning Up
@@ -347,7 +358,7 @@ working branches.
 - Deleting local branch:
     ::
 
-        $ git checkout master
+        $ git checkout develop
         $ git branch -d branch_name
 
 --------------
