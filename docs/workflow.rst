@@ -295,7 +295,7 @@ When starting to work on a new issue, you always MUST start a new branch for it 
 
 In which:
 
-- ``<issue-key>`` is the "key" of the issue. It could be ``CLT-xxx``, ``DEV-xxx`` for issues on ``issues.teracy.org`` or ``#XXX`` for issues on ``gitlab`` and ``github``. The key prefix is based on the type of project.
+- ``<issue-key>`` is the "key" of the issue. It could be ``CLT-XXX``, ``DEV-XXX`` for issues on ``issues.teracy.org`` or ``#XXX`` for issues on ``gitlab`` and ``github``. The key prefix is based on the type of project.
 - ``<concise-title>`` is the issue's title which is rewritten in a concise way and replaced ``space`` with ``-``.
 - ``<issue-key>`` and ``<concise-title>`` is separated by a ``-`` character.
 
@@ -330,7 +330,7 @@ should follow the convention pattern:
 ::
 
    <issue-key> | <issue-title>: <changes description>
-    <Multi-line description for detail changes, notices, solutions, etc.>
+   Multi-line description for detail changes, notices, solutions, etc.>
 
 For example:
 ::
@@ -341,7 +341,7 @@ For example:
     This is the work on local part.
 
 .. note::
-    "@" is used before *<issue-key>* because github, and gitlab have the "#" character. It's fine for the command *git commit -m "#<issue-number>"* but not for *git commit -a* or new commit or *$ git commit --amend* for an existing commit to open on the VIM editor.
+    "@" is used before because github, and gitlab's issue keys have the "#" character. It's fine for the command *$ git commit -m "#"* but not for *$ git commit -a* for a new commit or *$ git commit --amend* for an existing commit to open on the VIM editor. That's the reason why we should use "@" character, it means "address".
 
 ----------------------
 Git Branch Cleaning Up
