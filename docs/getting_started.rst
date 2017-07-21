@@ -381,6 +381,6 @@ https://help.github.com/articles/connecting-to-github-with-ssh/
 
    .. note::
 
-      On Window, you should use ``Cygwin Terminal`` instead of ``Git Bash``.
+      On Window, you must always use ``Cygwin Terminal``, not ``Git Bash``.
 
 *Congratulations, you've all set now!*
